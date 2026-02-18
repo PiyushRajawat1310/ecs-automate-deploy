@@ -5,12 +5,10 @@ on:
     branches:
       - main
       - develop
-  pull_request:
-    branches:
-      - main
 
 env:
-  IMAGE_NAME: strapi-app
+  IMAGE_NAME: strapi
+  IMAGE_TAG: "0.1"
 
 jobs:
   build:
@@ -28,9 +26,5 @@ jobs:
 
     - name: Build & Push Docker Image
       run: |
-        IMAGE_TAG=${GITHUB_SHA}
-        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/${IMAGE_NAME}:$IMAGE_TAG my-strapi
-        docker tag ${{ secrets.DOCKERHUB_USERNAME }}/${IMAGE_NAME}:$IMAGE_TAG \
-                   ${{ secrets.DOCKERHUB_USERNAME }}/${IMAGE_NAME}:latest
-        docker push ${{ secrets.DOCKERHUB_USERNAME }}/${IMAGE_NAME}:$IMAGE_TAG
-        docker push ${{ secrets.DOCKERHUB_USERNAME }}/${IMAGE_NAME}:latest
+        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/${IMAGE_NAME}:${IMAGE_TAG} my-strapi
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/${IMAGE_NAME}:${IMAGE_TAG}
