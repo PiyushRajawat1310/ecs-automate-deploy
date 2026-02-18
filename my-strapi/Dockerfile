@@ -13,7 +13,7 @@ RUN apk add --no-cache \
 COPY package.json package-lock.json ./
 
 # Install dependencies
-RUN npm ci
+RUN npm install
 
 # Copy app source
 COPY . .
