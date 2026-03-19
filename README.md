@@ -224,7 +224,7 @@ Immutable Docker images
 
 Git-driven infrastructure changes
 
-Centralized logging & monitoring
+Centralized logging & monitoring.
 
 🟢 Current Status
 
