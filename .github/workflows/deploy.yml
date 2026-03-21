@@ -27,7 +27,6 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
 
-    # ✅ REQUIRED: Install Terraform
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
       with:
@@ -44,3 +43,12 @@ jobs:
         terraform apply -auto-approve \
           -var="image_uri=${IMAGE_URI}" \
           -var="aws_region=${AWS_REGION}"
+
+    
+    - name: Force ECS Deployment
+      run: |
+        aws ecs update-service \
+          --cluster strapi-cluster \
+          --service strapi-service \
+          --force-new-deployment \
+          --region $AWS_REGION
