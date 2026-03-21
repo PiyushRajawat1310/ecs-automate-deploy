@@ -231,4 +231,4 @@ Centralized logging & monitoring.
 ✔ CI/CD automated
 ✔ ECS service running
 ✔ CloudWatch logs enabled
-✔ ECS metrics available
+✔ ECS metrics available.
