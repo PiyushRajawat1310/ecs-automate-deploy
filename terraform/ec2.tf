@@ -59,7 +59,7 @@ resource "aws_instance" "ecs_instance" {
    key_name = aws_key_pair.ecs_key_pair.key_name
 
   iam_instance_profile = aws_iam_instance_profile.ecs_instance_profile.name
-  security_groups      = [aws_security_group.ecs_instance_sg.name]
+  vpc_security_group_ids = [aws_security_group.ecs_instance_sg.id]
 
   user_data = <<-EOF
               #!/bin/bash
