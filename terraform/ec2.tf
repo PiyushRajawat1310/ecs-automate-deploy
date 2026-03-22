@@ -56,6 +56,8 @@ resource "aws_instance" "ecs_instance" {
   ami           = data.aws_ami.ecs_optimized.id
   instance_type = "t3.small"
 
+   key_name = aws_key_pair.ecs_key_pair.key_name
+
   iam_instance_profile = aws_iam_instance_profile.ecs_instance_profile.name
   security_groups      = [aws_security_group.ecs_instance_sg.name]
 
